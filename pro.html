@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Derby Beauty Shop - Skincare Berkualitas</title>
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --color-primary: #7b3fe4;
+      --color-primary-dark: #5a2db8;
+      --color-secondary: #f49ac2;
+      --color-secondary-dark: #d06ea0;
+      --color-dark: #2c1e56;
+      --color-light: #f8f5ff;
+      --color-white: #ffffff;
+      --color-gray: #e6e6e6;
+      --border-radius: 12px;
+      --box-shadow: 0 8px 24px rgba(123, 63, 228, 0.12);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fcefee, #ffe6f0);
+      color: var(--color-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      width: 100%;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--color-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links a:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-secondary);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: var(--color-dark);
+      opacity: 0.8;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-white);
+      padding: 14px 32px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 12px 24px rgba(123, 63, 228, 0.3);
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 32px rgba(123, 63, 228, 0.4);
+    }
+
+    /* Products Section */
+    .products {
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background-color: var(--color-white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(95, 46, 229, 0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: var(--color-dark);
+    }
+
+    .product-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 20px;
+    }
+
+    .btn-buy {
+      display: block;
+      width: 100%;
+      background: linear-gradient(45deg, var(--color-secondary), var(--color-primary));
+      color: var(--color-white);
+      border: none;
+      padding: 12px;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* About & Contact Sections */
+    .about, .contact {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      }
+      
+      .nav-links {
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0;
+      }
+      
+      .nav-links {
+        gap: 12px;
+      }
+      
+      .hero {
+        padding: 60px 20px;
+      }
+      
+      .product-info {
+        padding: 15px;
+      }
+    }
+    
+    
+    
+    
+    
+    .products-scroll-container {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 16px;
+      margin-bottom: 30px;
+    }
+
+    .products-scroll {
+      display: flex;
+      gap: 20px;
+    }
+
+    .scroll-card {
+      flex: 0 0 auto;
+      width: 180px;
+      background: var(--color-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scroll-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+    }
+
+    .info {
+      padding: 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info h4 {
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--color-dark);
+    }
+
+    .info p {
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .btn-buy {
+      background: linear-gradient(45deg, var(--color-secondary), var(--color-primary));
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: var(--border-radius);
+      font-weight: bold;
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+    }
+
+    .btn-buy:hover {
+      opacity: 0.9;
+    }
+
+    /* Scrollbar styling */
+    .products-scroll-container::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    .products-scroll-container::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .scroll-card {
+        width: 200px;
+      }
+    }
+    
+    
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Derby Beauty</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="#about">Tentang</a>
+          <a href="#contact">Kontak</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+  
+
+
+
+
+  <h2>Produk Terlaris</h2>
+  <div class="products-scroll-container">
+    <div class="products-scroll">
+      <div class="scroll-card">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Produk 1">
+        <div class="info">
+          <h4>Serum Pencerah</h4>
+          <p>Rp75.000</p>
+          <a href="#" class="btn-buy">Beli Sekarang</a>
+        </div>
+      </div>
+
+      <div class="scroll-card">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Produk 2">
+        <div class="info">
+          <h4>Toner Alami</h4>
+          <p>Rp55.000</p>
+          <a href="#" class="btn-buy">Beli Sekarang</a>
+        </div>
+      </div>
+
+      <div class="scroll-card">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80">
+        <div class="info">
+          <h4>Moisturizer</h4>
+          <p>Rp65.000</p>
+          <a href="#" class="btn-buy">Beli Sekarang</a>
+        </div>
+      </div>
+
+      <div class="scroll-card">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80">
+        <div class="info">
+          <h4>Facial Wash</h4>
+          <p>Rp45.000</p>
+          <a href="#" class="btn-buy">Beli Sekarang</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+    <section id="products" class="products">
+      <div class="container">
+        <div class="section-title">
+
+        </div>
+        
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Serum Vitamin C" class="product-image">
+            <div class="product-info">
+              <h3 class="product-name">Serum Vitamin C</h3>
+              <p class="product-price">Rp 250.000</p>
+              <button class="btn-buy">Beli Sekarang</button>
+            </div>
+          </div>
+          
+          <!-- Product 2 -->
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Pelembab Harian" class="product-image">
+            <div class="product-info">
+              <h3 class="product-name">Pelembab Harian</h3>
+              <p class="product-price">Rp 180.000</p>
+              <button class="btn-buy">Beli Sekarang</button>
+            </div>
+          </div>
+          
+          <!-- Product 3 -->
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Pembersih Wajah" class="product-image">
+            <div class="product-info">
+              <h3 class="product-name">Pembersih Wajah</h3>
+              <p class="product-price">Rp 120.000</p>
+              <button class="btn-buy">Beli Sekarang</button>
+            </div>
+          </div>
+          
+          <!-- Product 4 -->
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Masker Wajah" class="product-image">
+            <div class="product-info">
+              <h3 class="product-name">Masker Wajah</h3>
+              <p class="product-price">Rp 150.000</p>
+              <button class="btn-buy">Beli Sekarang</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Hubungi Kami</h2>
+        </div>
+        <p>Email: info@derbybeauty.com<br>Telepon: +62 812 3456 7890</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Derby Beauty Glow. Semua hak dilindungi.</p>
+    </div>
+  </footer>
+</body>
+</html>
